@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Vue js Api Route
+Route::apiResource('loads', 'API\LoadController');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
