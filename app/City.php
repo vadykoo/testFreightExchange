@@ -11,6 +11,13 @@ class City extends Model
 
     public $translatable = ['name'];
 
-//    protected $fillable = ['name', 'lat', 'lng', 'slug'];
+    public function loads_from()
+    {
+        return $this->hasMany('App\Load', 'city_from_id', 'id');
+    }
 
+//    public function loads_to()
+//    {
+//        return $this->hasMany('App\Load', 'city_to_id', 'id');
+//    }
 }

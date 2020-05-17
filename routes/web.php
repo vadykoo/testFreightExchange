@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('master');
+//});
+
+//Route::get('image/{filename}', 'HomeController@displayImage')->name('image.displayImage');
+
+
+Route::get('/{vue_capture?}', function () {
+    return view('master');
+})->where('vue_capture', '[\/\w\.-]*');
