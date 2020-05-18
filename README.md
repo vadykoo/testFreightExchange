@@ -20,11 +20,36 @@
 
 ## Як запустити?
 
+git clone https://github.com/vadykoo/testFreightExchange
+
+cd testFreightExchange
+
 composer install
 
-npm install
+копіювати собі .env файл
+
+Створити бд з іменем freightExchangeDB
+
+змінити 
+DB_USERNAME=root
+        DB_PASSWORD=
+        якщо потрібно
 
 php artisan migrate --seed
+якщо LoadSeeder не виконується то закоментувати в лоадфакторі все що пов'язано з зображенням
+
+php artisan storage:link
+
+php artisan serve
+
+відкрити сайт
+
+пошук по місту доступний за адресою типу
+http://127.0.0.1:8000/from/dnipro
+http://127.0.0.1:8000/uk/from/dnipro
+
+згенерувати новий вантаж для вебхук можна так
+http://127.0.0.1:8000/api/generate
 
 ## License
 
