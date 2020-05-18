@@ -17,9 +17,6 @@ use Illuminate\Support\Facades\Route;
 //    return view('master');
 //});
 
-//Route::get('image/{filename}', 'HomeController@displayImage')->name('image.displayImage');
-
-
 Route::get('/{vue_capture?}', function () {
     return view('master');
 })->where('vue_capture', '[\/\w\.-]*');

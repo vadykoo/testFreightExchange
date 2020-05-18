@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 //Vue js Api Route
 Route::get('loads/{city_from?}', 'API\LoadController@index');
+Route::get('generate', 'API\LoadController@generate');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});

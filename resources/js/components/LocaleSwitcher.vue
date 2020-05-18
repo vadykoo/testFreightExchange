@@ -13,14 +13,19 @@
             switchLocale(locale) {
                 if (this.$i18n.locale !== locale && locale !== this.$i18n.locale ) {
                     this.$i18n.locale = locale;
-                    const to = this.$router.resolve({ params: {locale} })
+                    let to;
+                    if(locale === process.env.MIX_APP_I18N_LOCALE){
+                        to = this.$router.resolve({ params: {locale: ''} })
+                    } else {
+                        to = this.$router.resolve({ params: {locale} })
+                    }
                     this.$router.push(to.location)
                 }
             }
         },
         data() {
             return {
-                locales: ['en', 'uk']
+                locales: process.env.MIX_APP_I18N_SUPPORTED_LOCALE.split(',')
             }
         }
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\City;
+use App\Events\LoadEvent;
 use App\Http\Controllers\Controller;
 use App\Load;
 use App\Http\Resources\Load as LoadResource;
@@ -21,6 +22,14 @@ class LoadController extends Controller
             $loads = Load::all();
         }
 
-        return LoadResource::collection($loads);
+        return LoadResource::collection($loads->reverse());
+    }
+
+    public function generate()
+    {
+        $new_load = factory(Load::class)->create();
+        broadcast(new LoadEvent(new LoadResource($new_load)));
+
+        return 'Створено, <br> можна оновити сторінку щоб сгенерувати ще';
     }
 }

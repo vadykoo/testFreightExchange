@@ -18,7 +18,7 @@ class Load extends JsonResource
             'id' => $this->id,
             'name' => $this->getTranslations('name'),
             'volume' => $this->volume,
-            'photo' => 'storage/'.$this->photo,
+            'photo' => asset('storage/'.$this->photo),
             'city_from' => $this->city_from,
             'city_to' => $this->city_to,
             'created_at' => $this->created_at,

@@ -10,6 +10,8 @@
     "watch-poll": "npm run watch -- --watch-poll"
   },
   "dependencies": {
+    "pusher-js": "^6.0.3",
+    "remove": "^0.1.5",
     "vue-i18n": "^8.17.5",
     "vue-router": "^3.1.6"
   },

@@ -46,38 +46,41 @@ const router = new VueRouter({
 const messages = {
     en: {
         message: {
-            name: 'Freight Exchange'
+            name: 'Freight Exchange',
+            loads_not_found: 'Loads not found'
         }
     },
     uk: {
         message: {
-            name: 'Біржа вантажів'
+            name: 'Біржа вантажів',
+            loads_not_found: 'Вантажів не знайдено'
         }
     }
 };
 
 router.beforeEach((to, from, next) => {
     const locale = to.params.locale;
-    const supported_locales = ['en', 'uk'];
-    if (!supported_locales.includes(locale)) return next();
+    const supported_locales = process.env.MIX_APP_I18N_SUPPORTED_LOCALE.split(',');
+    if (!locale || !supported_locales.includes(locale)){
+        i18n.locale = process.env.MIX_APP_I18N_LOCALE
+        return next();
+    }
+
     if (i18n.locale !== locale) {
         i18n.locale = locale;
-        // this.$router.push(to.location)
-
-        //     Vue.i18n.set(language);
     }
-    return next() // 5
+    return next()
 });
 
 // Create VueI18n instance with options
 const i18n = new VueI18n({
-    locale: 'en', // set locale
-    fallbackLocale: 'en',
+    locale: process.env.MIX_APP_I18N_LOCALE, // set locale
+    fallbackLocale: process.env.MIX_APP_I18N_FALLBACK_LOCALE,
     messages, // set locale messages
 });
 
 const app = new Vue({
     el: '#app',
     i18n,
-    router
+    router,
 });

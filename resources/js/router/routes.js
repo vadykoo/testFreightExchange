@@ -22,10 +22,10 @@ export const routes = [
                 name: 'to',
                 component: LoadList
             },
-            {
-                path:'*',
-                component: LoadList
-            },
+            // {
+            //     path:'*',
+            //     component: LoadList
+            // },
         ],
     },
 ];

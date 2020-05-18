@@ -1,10 +1,12 @@
 <template>
     <div class="container">
-        <router-link :to="{name: 'list', params: { locale: $i18n.locale }}" class="btn btn-success">{{ $t('message.name') }}</router-link>
-
+        <a href="/api/generate" target="_blank" class="btn btn-success">Згенерувати вантаж для перевірки роботи вебхук </a>
         <h1>{{ $t('message.name') }}</h1>
         <div class="row">
                 <div class="col-md-12">
+                    <div v-if="loads === false" class="row">
+                        <h2 class="col text-center">{{ $t('message.loads_not_found') }}</h2>
+                    </div>
                     <div class="card" v-for="(load, index) in loads">
                             <div class="card-header" v-on:click="setCurrent(index)">
                                 <div class="row">
@@ -22,7 +24,7 @@
                             <div class="row">
                                 <div class="col-6"><img :src="load.photo" alt=""></div>
                                 <div class="col-6">
-                                    <iframe width="100%" height="" frameborder="0" v-bind:src="src(load.city_from.slug, load.city_to.slug)"></iframe>
+                                    <iframe width="100%" height="100%" frameborder="0" v-bind:src="src(load.city_from.slug, load.city_to.slug)"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -33,17 +35,28 @@
 </template>
 
 <script>
+    import Pusher from 'pusher-js' // import Pusher
+
     export default {
         name: "LoadsListComponent",
         data: function () {
             return {
                 loads: [],
                 currentLoad: -1,
-                url: 'https://www.google.com/maps/embed/v1/directions?key=AIzaSyDRcYekiNSpo3SbEUfZA2G71lDEd6Kk_WI',
+                url: 'https://www.google.com/maps/embed/v1/directions?key=' + process.env.MIX_APP_GOOGLE_MAPS_KEY + '&language=' + this.$i18n.locale,
             }
         },
         created() {
             this.fetchLoads(this.$route.params.city_from);
+        },
+        mounted(){
+            let pusher = new Pusher(process.env.MIX_PUSHER_APP_KEY, { cluster: process.env.MIX_PUSHER_APP_CLUSTER })
+            pusher.subscribe('newLoadChannel')
+            pusher.bind('newLoadEvent', data => {
+                if(!this.$route.params.city_from) {
+                    this.loads.unshift(data.load);
+                }
+            })
         },
         methods: {
             fetchLoads(city_from) {
@@ -56,7 +69,10 @@
                     .then(res => {
                         this.loads = res.data;
                     })
-                    .catch(err => console.log(err));
+                    .catch(err => {
+                        console.log(err);
+                        this.loads = false;
+                    });
 
             },
             setCurrent(index) {
