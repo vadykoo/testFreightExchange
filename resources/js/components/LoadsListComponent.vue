@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <a href="/api/generate" target="_blank" class="btn btn-success">Згенерувати вантаж для перевірки роботи вебхук </a>
+        <a href="/api/generate" target="_blank" class="btn btn-success">Згенерувати вантаж для перевірки роботи вебсокет </a>
         <h1>{{ $t('message.name') }}</h1>
         <div class="row">
                 <div class="col-md-12">

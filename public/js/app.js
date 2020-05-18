@@ -44982,7 +44982,7 @@ var render = function() {
         staticClass: "btn btn-success",
         attrs: { href: "/api/generate", target: "_blank" }
       },
-      [_vm._v("Згенерувати вантаж для перевірки роботи вебхук ")]
+      [_vm._v("Згенерувати вантаж для перевірки роботи вебсокет ")]
     ),
     _vm._v(" "),
     _c("h1", [_vm._v(_vm._s(_vm.$t("message.name")))]),
