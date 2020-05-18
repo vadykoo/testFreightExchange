@@ -25,11 +25,11 @@ class LoadTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_api_city_info_apeearing()
+    public function test_api_city_info_appearing()
     {
         $response = $this->get('/api/loads');
 
-        $response->assertSee('name');
+        $response->assertSee('slug');
 
         $response->assertStatus(200);
     }

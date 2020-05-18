@@ -73,9 +73,3 @@
 
     </body>
 </html>
-<script>
-    import LocaleSwitcher from "../js/components/LocaleSwitcher";
-    export default {
-        components: {LocaleSwitcher}
-    }
-</script>
