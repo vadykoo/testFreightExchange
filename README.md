@@ -42,6 +42,9 @@ php artisan storage:link
 
 php artisan serve
 
+запуск тестів
+vendor\bin\phpunit
+
 відкрити сайт
 
 пошук по місту доступний за адресою типу
