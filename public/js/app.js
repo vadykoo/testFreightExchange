@@ -1946,6 +1946,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
  // import Pusher
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1953,8 +1955,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       loads: [],
-      currentLoad: -1,
-      url: 'https://www.google.com/maps/embed/v1/directions?key=' + "AIzaSyBlncKtm6VNqSkDyCTI6WCTrcyCnx2JzUM" + '&language=' + this.$i18n.locale
+      currentLoad: -1
     };
   },
   created: function created() {
@@ -1977,7 +1978,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchLoads: function fetchLoads(city_from) {
       var _this2 = this;
 
-      var page_url = '/api/loads';
+      var page_url = '/api/' + this.$i18n.locale + '/loads';
 
       if (city_from) {
         page_url = page_url + '/' + city_from;
@@ -2003,7 +2004,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.loads);
     },
     src: function src(origin, destination) {
-      return this.url + "&origin=" + origin + "&destination=" + destination;
+      return 'https://www.google.com/maps/embed/v1/directions?key=' + "AIzaSyBlncKtm6VNqSkDyCTI6WCTrcyCnx2JzUM" + '&language=' + this.$i18n.locale + "&origin=" + origin + "&destination=" + destination;
     }
   }
 });
@@ -2051,6 +2052,7 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         this.$router.push(to.location);
+        this.$router.go(0);
       }
     }
   },
@@ -44982,7 +44984,7 @@ var render = function() {
         staticClass: "btn btn-success",
         attrs: { href: "/api/generate", target: "_blank" }
       },
-      [_vm._v("Згенерувати вантаж для перевірки роботи вебсокет ")]
+      [_vm._v("Згенерувати вантаж для перевірки роботи\n        вебсокет ")]
     ),
     _vm._v(" "),
     _c("h1", [_vm._v(_vm._s(_vm.$t("message.name")))]),
@@ -45016,9 +45018,9 @@ var render = function() {
                   _c("div", { staticClass: "row" }, [
                     _c("div", { staticClass: "col-8 font-weight-bold" }, [
                       _vm._v(
-                        _vm._s(load.city_from.name[_vm.$i18n.locale]) +
+                        _vm._s(load.city_from.name) +
                           " - " +
-                          _vm._s(load.city_to.name[_vm.$i18n.locale])
+                          _vm._s(load.city_to.name)
                       )
                     ]),
                     _vm._v(" "),
@@ -45034,7 +45036,7 @@ var render = function() {
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "col" }, [
                         _c("h2", { staticClass: "font-weight-bold" }, [
-                          _vm._v(_vm._s(load.name[_vm.$i18n.locale]))
+                          _vm._v(_vm._s(load.name))
                         ])
                       ])
                     ]),

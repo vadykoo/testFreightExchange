@@ -20,6 +20,7 @@
                         to = this.$router.resolve({ params: {locale} })
                     }
                     this.$router.push(to.location)
+                    this.$router.go(0);
                 }
             }
         },

@@ -7,23 +7,27 @@ use App\Events\LoadEvent;
 use App\Http\Controllers\Controller;
 use App\Load;
 use App\Http\Resources\Load as LoadResource;
+use Illuminate\Http\Request;
 
 class LoadController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($city_from = null)
+    public function index()
     {
-        if( $city_from and $city_from !=='undefined' ) {
-            $city = City::where('slug', $city_from)->firstOrFail();
-            $loads = $city->loads_from;
-        } else {
-            $loads = Load::all();
-        }
+        $loads = Load::orderBy('id', 'desc')->get();
 
-        return LoadResource::collection($loads->reverse());
+        return LoadResource::collection($loads);
     }
+
+    public function indexFrom(Request $request)
+    {
+        $city = City::where('slug', $request->city_from)->firstOrFail();
+
+        return LoadResource::collection($city->loads_from);
+    }
+
 
     public function generate()
     {

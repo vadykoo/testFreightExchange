@@ -16,8 +16,4 @@ class City extends Model
         return $this->hasMany('App\Load', 'city_from_id', 'id');
     }
 
-//    public function loads_to()
-//    {
-//        return $this->hasMany('App\Load', 'city_to_id', 'id');
-//    }
 }
