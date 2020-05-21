@@ -1,24 +1,25 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+<p align = "center"> <img src = "https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width = "400"> </ p >
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+<p align = "center">
+<a href="https://travis-ci.org/laravel/framework"> <img src = "https://travis-ci.org/laravel/framework.svg" alt = "Build Status"> </ a>
+<a href="https://packagist.org/packages/laravel/framework"> <img src = "https://poser.pugx.org/laravel/framework/d/total.svg" alt = "Total Downloads "> </a>
+<a href="https://packagist.org/packages/laravel/framework"> <img src = "https://poser.pugx.org/laravel/framework/v/stable.svg" alt = "Latest Stable Version "> </a>
+<a href="https://packagist.org/packages/laravel/framework"> <img src = "https://poser.pugx.org/laravel/framework/license.svg" alt = "License"> < / a>
 </p>
 
-## About “Біржа вантажів”
+## About “Freight Exchange”
 
-Це технічне завдання передбачає створення простого сервісу для додавання та
-відображення вантажів.
+This technical task involves creating a simple service to add and
+cargo display.
 
-## Технологічний стек
+![Freight Exchange Demo](freightexchangeg.gif)
+## Technology stack
 
- ● Laravel
- ● Vue.js
- ● Bootstrap
+ ● Laravel
+ ● Vue.js
+ ● Bootstrap
 
-## Як запустити?
+## How to run?
 
 git clone https://github.com/vadykoo/testFreightExchange
 
@@ -26,37 +27,41 @@ cd testFreightExchange
 
 composer install
 
-копіювати собі .env файл
+copy yourself a .env file
 
-Створити бд з іменем freightExchangeDB
+Create a database named freightExchangeDB
 
-змінити 
-DB_USERNAME=root
-        DB_PASSWORD=
-        якщо потрібно
+change
+
+DB_USERNAME = root
+
+        DB_PASSWORD =
+        if needed
 
 php artisan migrate --seed
-якщо LoadSeeder не виконується то закоментувати в лоадфакторі все що пов'язано з зображенням
+if LoadSeeder is not executed then to comment in a load factor all that is connected with the image
 
-php artisan storage:link
+php artisan storage: link
 
 php artisan serve
 
-запуск тестів
-vendor\bin\phpunit
+running tests
+vendor \ bin \ phpunit
 
-відкрити сайт
+open site
 
-пошук по місту доступний за адресою типу
+search by city is available at the address of the type
 http://127.0.0.1:8000/from/dnipro
 http://127.0.0.1:8000/uk/from/dnipro
 
-згенерувати новий вантаж для вебсокет можна так
+you can generate a new load for web sockets
 http://127.0.0.1:8000/api/generate
 
-додатково якщо щось не працює
-npm install 
+additionally if something does not work
+
+npm install
+
 npm run dev
 ## License
 
-Open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Open-sourced software licensed under the [MIT license] (https://opensource.org/licenses/MIT).
